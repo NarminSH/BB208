@@ -1,4 +1,6 @@
+using BB208MVCIntro.DAL;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore;
 
 namespace BB208MVCIntro
 {
@@ -9,7 +11,10 @@ namespace BB208MVCIntro
             var builder = WebApplication.CreateBuilder(args);
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-
+            builder.Services.AddDbContext<AppDbContext>(opt =>
+            {
+                opt.UseSqlServer("Server=DELLNARMIN;Database=Bb208PurpleBuzz;TrustServerCertificate=True;Trusted_Connection=True");
+            }); 
             var app = builder.Build();
             app.UseStaticFiles();
 

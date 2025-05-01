@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\nshiv\\source\\repos\\BB208MVCIntro\\BB208MVCIntro.csproj": {}
+    "C:\\Users\\nshiv\\Desktop\\BB208\\BB208MVCIntro\\BB208MVCIntro.csproj": {}
   },
   "projects": {
-    "C:\\Users\\nshiv\\source\\repos\\BB208MVCIntro\\BB208MVCIntro.csproj": {
+    "C:\\Users\\nshiv\\Desktop\\BB208\\BB208MVCIntro\\BB208MVCIntro.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nshiv\\source\\repos\\BB208MVCIntro\\BB208MVCIntro.csproj",
+        "projectUniqueName": "C:\\Users\\nshiv\\Desktop\\BB208\\BB208MVCIntro\\BB208MVCIntro.csproj",
         "projectName": "BB208MVCIntro",
-        "projectPath": "C:\\Users\\nshiv\\source\\repos\\BB208MVCIntro\\BB208MVCIntro.csproj",
+        "projectPath": "C:\\Users\\nshiv\\Desktop\\BB208\\BB208MVCIntro\\BB208MVCIntro.csproj",
         "packagesPath": "C:\\Users\\nshiv\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nshiv\\source\\repos\\BB208MVCIntro\\obj\\",
+        "outputPath": "C:\\Users\\nshiv\\Desktop\\BB208\\BB208MVCIntro\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -50,9 +50,19 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
-            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+            "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[8.0.7, )"
+              "version": "[8.0.15, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.15, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.15, )"
             }
           },
           "imports": [
