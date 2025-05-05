@@ -10,9 +10,11 @@ namespace BB208MVCIntro.Models
         
         public string Title { get; set; }
         public string Description { get; set; }
-        public string ImgUrl { get; set; }
+        public string? ImgUrl { get; set; }
+        [NotMapped]
+        public IFormFile ImageUpload { get; set; }
         public int CategoryId { get; set; }
-        public Category Category { get; set; }
+        public Category? Category { get; set; }
 
     }
 }

@@ -1,0 +1,42 @@
+﻿@model List<Category>
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Categories</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Title</th>
+                            <th>Services Count</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (Category category in Model)
+                        {
+                            <tr>
+                                <td>@category.Id</td>
+                                <td>@category.Title</td>
+                                <td>@category.Services.Count</td>
+                                <td><a class="btn btn-danger" asp-area="Admin" asp-controller="Category" asp-action="Delete" asp-route-id="@category.Id">Delete</a></td>
+                                <td><a class="btn btn-warning" asp-area="Admin" asp-controller="Category" asp-action="Update" asp-route-id="@category.Id">Update</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->
+</div>
+<!-- End of Main Content -->
