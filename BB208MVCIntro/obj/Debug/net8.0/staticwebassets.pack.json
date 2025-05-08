@@ -1,6 +1,18 @@
 {
   "Files": [
     {
+      "Id": "C:\\Users\\nshiv\\Desktop\\BB208\\BB208MVCIntro\\wwwroot\\UploadImages\\Services\\32f9b976-4c2c-4325-be68-9cfd00327eb1images.jpg",
+      "PackagePath": "staticwebassets\\UploadImages\\Services\\32f9b976-4c2c-4325-be68-9cfd00327eb1images.jpg"
+    },
+    {
+      "Id": "C:\\Users\\nshiv\\Desktop\\BB208\\BB208MVCIntro\\wwwroot\\UploadImages\\Services\\8a643aa7-9f07-4e84-a332-927030e53131images.jpg",
+      "PackagePath": "staticwebassets\\UploadImages\\Services\\8a643aa7-9f07-4e84-a332-927030e53131images.jpg"
+    },
+    {
+      "Id": "C:\\Users\\nshiv\\Desktop\\BB208\\BB208MVCIntro\\wwwroot\\UploadImages\\Services\\ffaed69c-3c0e-432d-8543-da1b9e84def5images.jpg",
+      "PackagePath": "staticwebassets\\UploadImages\\Services\\ffaed69c-3c0e-432d-8543-da1b9e84def5images.jpg"
+    },
+    {
       "Id": "C:\\Users\\nshiv\\Desktop\\BB208\\BB208MVCIntro\\wwwroot\\UploadImages\\Services\\images.jpg",
       "PackagePath": "staticwebassets\\UploadImages\\Services\\images.jpg"
     },

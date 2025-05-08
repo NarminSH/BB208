@@ -28,6 +28,7 @@
                                 <td>@category.Services.Count</td>
                                 <td><a class="btn btn-danger" asp-area="Admin" asp-controller="Category" asp-action="Delete" asp-route-id="@category.Id">Delete</a></td>
                                 <td><a class="btn btn-warning" asp-area="Admin" asp-controller="Category" asp-action="Update" asp-route-id="@category.Id">Update</a></td>
+                                <td><a class="btn btn-success" asp-area="Admin" asp-controller="Category" asp-action="AssignServices" asp-route-id="@category.Id">Assign Services</a></td>
                             </tr>
                         }
                     </tbody>

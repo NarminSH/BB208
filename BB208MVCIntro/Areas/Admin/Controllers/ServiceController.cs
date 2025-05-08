@@ -1,5 +1,6 @@
 ﻿using BB208MVCIntro.DAL;
 using BB208MVCIntro.Models;
+using BB208MVCIntro.Utilities.File;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -32,17 +33,12 @@ namespace BB208MVCIntro.Areas.Admin.Controllers
             {
                 return View(service);
             }
-            if(!service.ImageUpload.ContentType.Contains("image"))
+            if (!service.ImageUpload.CheckImageType())
             {
                 ModelState.AddModelError("ImageUpload", "File must be Image format");
                 return View(service);
             }
-            string filename = Guid.NewGuid() +  service.ImageUpload.FileName;
-            string path = _webEnvironment.WebRootPath + @"\UploadImages\Services\";
-            using (FileStream fileStream = new FileStream(path+filename, FileMode.Create))
-            {
-                service.ImageUpload.CopyTo(fileStream);
-            }
+            string filename = service.ImageUpload.DownloadImage(_webEnvironment, @"\UploadImages\Services\");
             service.ImgUrl = filename;
             _db.Services.Add(service);
             _db.SaveChanges();

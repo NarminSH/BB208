@@ -1,6 +1,8 @@
-﻿using BB208MVCIntro.DAL;
+﻿using BB208MVCIntro.Areas.ViewModels.CategoryVMs;
+using BB208MVCIntro.DAL;
 using BB208MVCIntro.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace BB208MVCIntro.Areas.Admin.Controllers
@@ -65,5 +67,44 @@ namespace BB208MVCIntro.Areas.Admin.Controllers
             _db.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
+
+        public IActionResult AssignServices(int id)
+        {
+            Category? existingCategory = _db.Categories.Find(id);
+            if (existingCategory == null) { return NotFound("Category could not be found"); }
+            BatchAssignVM batchAssignVM = new BatchAssignVM()
+            {
+                CategoryId = id,
+                AllServices = _db.Services.Select(s => new SelectListItem { Value = s.Id.ToString(), Text = s.Title }).ToList(),
+                ServiceIds = new List<int> ()
+            };
+            return View(batchAssignVM);
+        }
+
+        [HttpPost]
+        public IActionResult AssignServices(BatchAssignVM model)
+        {
+            if ( model.ServiceIds == null || model.ServiceIds.Any() )
+            {
+                ModelState.AddModelError("", "Add at least one service to category");
+                BatchAssignVM batchAssignVM = new BatchAssignVM()
+                {
+                    CategoryId = model.CategoryId,
+                    AllServices = _db.Services.Select(s =>
+                    new SelectListItem { Value = s.Id.ToString(), Text = s.Title }).ToList(),
+                    ServiceIds = new List<int>()
+                };
+                return View(batchAssignVM);
+            }
+
+            var services = _db.Services.Where(s => model.ServiceIds.Contains(s.Id));
+            foreach (var service in services)
+            {
+                service.CategoryId = model.CategoryId;
+            };
+            _db.SaveChanges();
+            return RedirectToAction(nameof(Index));
+        }
+
     }
 }

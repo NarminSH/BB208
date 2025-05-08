@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BB208MVCIntro")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9293502bfa33ff82959586611c8b98e581c07aca")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a71f2ff47868fac680dd4e53cb2c40ac27a83d3d")]
 [assembly: System.Reflection.AssemblyProductAttribute("BB208MVCIntro")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BB208MVCIntro")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

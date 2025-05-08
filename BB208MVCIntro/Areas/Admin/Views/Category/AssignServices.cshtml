@@ -1,0 +1,18 @@
+﻿@using BB208MVCIntro.Areas.ViewModels.CategoryVMs
+@model BatchAssignVM;
+
+<h2>Assign Services to Category</h2>
+
+<form method="post">
+    <input type="hidden" asp-for="CategoryId"/>
+    <div class="form-group">
+        <select asp-items="Model.AllServices" asp-for="ServiceIds" class="form-select" multiple>
+        </select>
+    </div>
+
+        <div asp-validation-summary="All" class="text-danger"></div>
+   
+
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
