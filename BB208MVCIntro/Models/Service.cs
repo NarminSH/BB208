@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
+using System.Security;
 
 namespace BB208MVCIntro.Models
 {
@@ -10,10 +13,9 @@ namespace BB208MVCIntro.Models
         
         public string Title { get; set; }
         public string Description { get; set; }
-        public string? ImgUrl { get; set; }
-        [NotMapped]
-        public IFormFile ImageUpload { get; set; }
-        public int CategoryId { get; set; }
+        public string ImgUrl { get; set; }
+     
+        public int? CategoryId { get; set; }
         public Category? Category { get; set; }
 
     }

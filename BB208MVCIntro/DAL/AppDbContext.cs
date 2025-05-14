@@ -1,6 +1,8 @@
 ﻿using BB208MVCIntro.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
+using System.Reflection.Emit;
 
 namespace BB208MVCIntro.DAL
 {
@@ -10,11 +12,21 @@ namespace BB208MVCIntro.DAL
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<Service> Services { get; set; }
-        
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    base.OnModelCreating(modelBuilder);
-        //    modelBuilder.Entity<Category>()
-        //}
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.Entity<Category>().Property(c => c.Title).HasMaxLength(20);
+
+           
+
+            builder.Entity<Service>().Property(s=>s.Title).HasMaxLength(20);
+            builder.Entity<Service>().Property(s=>s.Description).HasMaxLength(100);
+            builder.Entity<Service>().HasOne(s => s.Category).WithMany(s => s.Services)
+                .HasForeignKey(s => s.CategoryId)
+                .OnDelete(DeleteBehavior.Restrict);
+            
+
+        }
     }
 }

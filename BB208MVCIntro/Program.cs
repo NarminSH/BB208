@@ -9,7 +9,7 @@ namespace BB208MVCIntro
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
             // Add services to the container.
@@ -18,7 +18,7 @@ namespace BB208MVCIntro
             {
                 opt.UseSqlServer(builder.Configuration.GetConnectionString("MsSql"));
             });
-            builder.Services.AddIdentity<AppUser, IdentityRole>
+            builder.Services.AddIdentity<AppUser,IdentityRole>
                 (opt =>
                 {
                     opt.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_@";
@@ -30,8 +30,11 @@ namespace BB208MVCIntro
 
                 }).AddDefaultTokenProviders().AddEntityFrameworkStores<AppDbContext>();
             var app = builder.Build();
+
             app.UseStaticFiles();
-            app.UseAuthentication();    
+            app.UseAuthentication();
+            app.UseAuthorization();
+           
             app.MapControllerRoute(
                   name: "areas",
                   pattern: "{area:exists}/{controller=Dashboard}/{action=Index}/{id?}"

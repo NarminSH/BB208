@@ -1,6 +1,7 @@
 ﻿using BB208MVCIntro.Areas.ViewModels.CategoryVMs;
 using BB208MVCIntro.DAL;
 using BB208MVCIntro.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -8,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 namespace BB208MVCIntro.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles ="Admin")]
     public class CategoryController : Controller
     {
         private readonly AppDbContext _db;
@@ -39,6 +41,11 @@ namespace BB208MVCIntro.Areas.Admin.Controllers
         public IActionResult Delete(int id)
         {
             Category? category = _db.Categories.Find(id);
+            Service? services = _db.Services.FirstOrDefault(s => s.CategoryId == category.Id);
+            if (services != null)
+            {
+                return BadRequest("Database-da bu categoryId-li service var. Sen bu category-ni sile bilmersen!");
+            }
             if (category == null) { return NotFound("Category could not be found"); }
             _db.Categories.Remove(category);
             _db.SaveChanges();
